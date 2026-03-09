@@ -1,13 +1,16 @@
-export interface Note{
-    id: string;
-    title: string;
-    content: string,
-    tag: string;
-    createdAt: string;
-    updatedAt: string;
-};
+export interface Note {
+	id: string,
+	title: string,
+	content: string,
+	createdAt: string,
+	updatedAt: string,
+	tag: NoteTag,
+}
 
-export type NoteTag=| "Todo"| "Work"| "Personal"| "Meeting"| "Shopping";
+export interface NewNote {
+	title: string,
+	content: string,
+	tag: NoteTag,
+}
 
-export type NoteId = Note['id'];
-export type NoteCreate = Omit<Note, "id" | "createdAt" | "updatedAt">;
+export type NoteTag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping"

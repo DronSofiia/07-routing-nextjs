@@ -7,13 +7,13 @@ type Props = {
 	params: Promise<{id: string}>;
 };
 
-export default async function NoteDetails({params}: Props) {
-    const queryClient = new QueryClient();
+const NoteDetails = async ({params}: Props) => {
+	const queryClient = new QueryClient();
 	const { id } = await params;
 
 	queryClient.prefetchQuery({
 		queryKey: ['note', id],
-		queryFn: () => fetchNoteById(id)
+		queryFn: () => fetchNoteById({currentId: id})
 	})
 
 	return (
@@ -22,3 +22,5 @@ export default async function NoteDetails({params}: Props) {
 		</HydrationBoundary>
 	);
 }
+
+export default NoteDetails;

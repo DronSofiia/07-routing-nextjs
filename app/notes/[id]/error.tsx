@@ -6,6 +6,6 @@ export default function Error({
   error: Error;
 }) {
   return (
-    <p>Could not fetch note details. {error.message}</p>
+    <p>Ops something went wrong... {error.message}</p>
   );
 }

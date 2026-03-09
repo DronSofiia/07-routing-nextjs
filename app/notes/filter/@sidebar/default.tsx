@@ -1,8 +1,11 @@
-import Link from "next/link";
 import css from "./SidebarNotes.module.css"
 
-export default function SideBarNotes() {
-    return(<ul className={css.menuList}>
+import Link from "next/link";
+
+const SidebarNotes = () => {
+	return (
+  	<ul className={css.menuList}>
+    	{/* список тегів */}
       <li className={css.menuItem}>
 				<Link href={"/notes/filter/all"} className={css.menuLink}>
 					All notes
@@ -36,3 +39,5 @@ export default function SideBarNotes() {
     </ul>
 	)
 }
+
+export default SidebarNotes;
