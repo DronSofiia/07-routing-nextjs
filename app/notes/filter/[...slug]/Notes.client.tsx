@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import css from "./NotesPage.module.css";
+import css from "./Notes.client.module.css";
 
 import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
@@ -12,7 +12,7 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebouncedCallback } from "use-debounce";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
-import { fetchNotes, FetchNotesByCategory } from "@/lib/api";
+import { fetchNotes, fetchNotesByCategory } from "@/lib/api";
 import { NoteTag } from "@/types/note";
 
 interface Props {
@@ -34,7 +34,7 @@ export default function NotesClient({ tag }: Props) {
 
     queryFn: () =>
       tag
-        ? FetchNotesByCategory({
+        ? fetchNotesByCategory({
             currentPage: page,
             searchText: query,
             noteTag: tag,

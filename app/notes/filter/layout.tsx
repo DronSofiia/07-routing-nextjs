@@ -8,7 +8,7 @@ export default function NotesLayout({
     sidebar,
   }: Props) {
     return (
-        <section style={{backgroundColor: "black"}}>
+        <section style={{display: "flex"}}>
         <aside>{sidebar}</aside>
         <div>{children}</div>
       </section>

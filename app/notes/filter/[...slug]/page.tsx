@@ -1,5 +1,5 @@
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
-import { fetchNotes, FetchNotesByCategory } from "@/lib/api";
+import { fetchNotes, fetchNotesByCategory } from "@/lib/api";
 import NotesClient from "./Notes.client";
 import { NoteTag } from "@/types/note";
 
@@ -19,7 +19,7 @@ export default async function NotesPage({ params }: Props) {
     queryKey: ["notes", "", 1, category],
     queryFn: () =>
       category
-        ? FetchNotesByCategory({
+        ? fetchNotesByCategory({
             currentPage: 1,
             searchText: "",
             noteTag: category,

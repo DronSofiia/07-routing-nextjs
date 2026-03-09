@@ -32,7 +32,7 @@ export async function fetchNotes(
     return data;
 };
 
-export async function FetchNotesByCategory({ currentPage, searchText, noteTag }: FetchNotesByCategoryParam): Promise<FetchNotesProps>{
+export async function fetchNotesByCategory({ currentPage, searchText, noteTag }: FetchNotesByCategoryParam): Promise<FetchNotesProps>{
     const { data } = await axios.get<FetchNotesProps>("/", {
         params: {
             search: searchText || "",
