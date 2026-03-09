@@ -35,4 +35,4 @@ export default function Modal({ children, onClose }: ModalProps) {
         </div>,
         document.body
       );
-};
+}

@@ -1,14 +1,16 @@
-export default function FilterLayout({
-    children,
-    sidebar,
-  }: {
+type Props = {
     children: React.ReactNode;
     sidebar: React.ReactNode;
-  }) {
+}
+
+export default function NotesLayout({
+    children,
+    sidebar,
+  }: Props) {
     return (
-      <div style={{ display: "flex", gap: "20px" }}>
+        <section style={{backgroundColor: "black"}}>
         <aside>{sidebar}</aside>
-        <main>{children}</main>
-      </div>
+        <div>{children}</div>
+      </section>
     );
   }

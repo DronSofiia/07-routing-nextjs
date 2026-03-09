@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Note, NoteCreate, NoteId } from "../types/note";
+import type { Note, NoteCreate, NoteId, NoteTag } from "../types/note";
 
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 
@@ -11,22 +11,38 @@ interface FetchNotesProps {
   totalPages: number;
 }
 
+interface FetchNotesByCategoryParam{
+    currentPage: number;
+	searchText: string;
+	noteTag: NoteTag
+}
+
 export async function fetchNotes(
     search: string,
     page: number,
-    tag?: string
   ): Promise<FetchNotesProps> {
     const { data } = await axios.get<FetchNotesProps>("/notes", {
         params: {
             search,
             page,
             perPage: 10,
-            ...(tag && tag !== "all" ? { tag } : {}),
           },
     });
   
     return data;
 };
+
+export async function FetchNotesByCategory({ currentPage, searchText, noteTag }: FetchNotesByCategoryParam): Promise<FetchNotesProps>{
+    const { data } = await axios.get<FetchNotesProps>("/", {
+        params: {
+            search: searchText || "",
+            tag: noteTag,
+            page: currentPage,
+            perPage: 12
+        }
+    });
+    return data;
+}
 
 export async function createNote(taskData: NoteCreate): Promise<Note> {
   const { data } = await axios.post<Note>("/notes", taskData);
